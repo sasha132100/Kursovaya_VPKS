@@ -129,10 +129,7 @@ namespace Kursovaya_VPKS.Windows
         private string AddNewPassport()
         {
             if (CheckingTheFullness() != "Заполнены")
-            {
-                MessageBox.Show("Заполните все поля для добавления!");
                 return "Не заполнены";
-            }
             using (var db = new myDocxAppContext())
             {
                 AddNewItem();
@@ -163,7 +160,7 @@ namespace Kursovaya_VPKS.Windows
                     passport.ResidencePlace = PlaceOfResidenceTextBlock.Text;
                     db.Entry(passport).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     db.SaveChanges();
-                    MessageBox.Show("Я изменил");
+                    MessageBox.Show("Данные изменены");
                 }
             }
         }
@@ -173,7 +170,11 @@ namespace Kursovaya_VPKS.Windows
             if (SystemContext.isChange == "No")
             {
                 if (AddNewPassport() == "Не заполнены")
-                    return;
+                {
+                    MessageBoxResult messageBoxResult = MessageBox.Show("Вы заполнили не все поля, уверены, что хотите выйти?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (messageBoxResult == MessageBoxResult.No)
+                        return;
+                }    
             }
             else
             {
