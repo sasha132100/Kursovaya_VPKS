@@ -69,7 +69,7 @@ namespace Kursovaya_VPKS.Windows
 
             ImageBrush imageBrush = new ImageBrush();
             Image image = new Image();
-            if (SystemContext.isGuest == "Yes" || item.Image.ToString() != "rgfjigjrigrj"/*null*/)
+            if (SystemContext.isGuest == "Yes" || item.Image.ToString() != "rgfjigjrigrj"/*null*/ || item.Image == null)
                 image.Source = new BitmapImage(new Uri("C:\\Users\\sasha\\source\\repos\\Kursovaya_VPKS\\Kursovaya_VPKS\\Resources\\DocumentPlugImage.png"));
             else
                 image.Source = new BitmapImage(new Uri(""));

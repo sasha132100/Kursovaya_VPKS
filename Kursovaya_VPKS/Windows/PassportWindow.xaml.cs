@@ -77,20 +77,16 @@ namespace Kursovaya_VPKS.Windows
 
         private string CheckingTheFullness()
         {
-            if (SerialAndNumberTextBlock.Text != "" || DivisionCodeTextBlock.Text != "" || DateOfIssueTextBlock.Text != "" ||
-                IssuedByWhomTextBlock.Text != "" || FIOTextBlock.Text != "" || DateOfBirthTextBlock.Text != "" ||
-                PlaceOfBirthTextBlock.Text != "" || PlaceOfResidenceTextBlock.Text != "")
+            if (SerialAndNumberTextBlock.Text != "" && DivisionCodeTextBlock.Text != "" && DateOfIssueTextBlock.Text != "" &&
+                IssuedByWhomTextBlock.Text != "" && FIOTextBlock.Text != "" && DateOfBirthTextBlock.Text != "" &&
+                PlaceOfBirthTextBlock.Text != "" && PlaceOfResidenceTextBlock.Text != "")
             {
-                if (MaleChoiseRadioButton.IsChecked == false && FemaleChoiseRadioButton.IsChecked == false)
-                {
-                    return "Не заполнены";
-                }
-                return "Заполнены";
-            }
-            else
-            {
+                if (MaleChoiseRadioButton.IsChecked == true || FemaleChoiseRadioButton.IsChecked == true)
+                    return "Заполнены";
                 return "Не заполнены";
             }
+            else
+                return "Не заполнены";
         }
 
         private string CheckingTheChanges()
@@ -161,8 +157,10 @@ namespace Kursovaya_VPKS.Windows
         private void BackWindowButtonImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (SystemContext.isChange == "No")
+            {
                 if (AddNewPassport() == "Не заполнены")
                     return;
+            }
             else
             {
                 ChangePassport();
