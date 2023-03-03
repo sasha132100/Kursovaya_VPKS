@@ -11,5 +11,6 @@ namespace Kursovaya_VPKS.Classes
         public static Users User { get; set; } = null;
         public static string isGuest { get; set; } = "No";
         public static Items Item { get; set; } = null;
+        public static string isChange { get; set; } = "No";
     }
 }

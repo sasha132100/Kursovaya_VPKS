@@ -19,35 +19,37 @@
             <ImageBrush ImageSource="C:\Users\sasha\source\repos\Kursovaya_VPKS\Kursovaya_VPKS\Resources\MainWindowBackgroundGradient.png"/>
         </DockPanel.Background>
         <Grid Width="Auto" Height="70" Background="#2D346F" DockPanel.Dock="Top">
-                <Grid Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" MouseLeftButtonUp="OpenSettingPageButtonImage_MouseLeftButtonUp" Cursor="Hand">
-                    <Grid.Background>
-                        <ImageBrush ImageSource="C:\Users\sasha\source\repos\Kursovaya_VPKS\Kursovaya_VPKS\Resources\OpenSettingsPageButtonImage.png"/>
-                    </Grid.Background>
-                </Grid>
-                <TextBlock x:Name="EmailOutTextBlock" Style="{StaticResource ResourceKey=TextBlockMainProperties}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Grid Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" MouseLeftButtonUp="OpenSettingPageButtonImage_MouseLeftButtonUp" Cursor="Hand">
+                <Grid.Background>
+                    <ImageBrush ImageSource="C:\Users\sasha\source\repos\Kursovaya_VPKS\Kursovaya_VPKS\Resources\OpenSettingsPageButtonImage.png"/>
+                </Grid.Background>
+            </Grid>
+            <TextBlock x:Name="EmailOutTextBlock" Style="{StaticResource ResourceKey=TextBlockMainProperties}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
-        <ScrollViewer Height="Auto" DockPanel.Dock="Top">
+        <ScrollViewer Height="Auto" DockPanel.Dock="Top" Padding="0,18,0,0">
             <WrapPanel x:Name="DocumentsViewGrid">
                 <WrapPanel.Resources>
                     <Style x:Key="ContentBorderStyle" TargetType="Border">
                         <Setter Property="Width" Value="160"/>
-                        <Setter Property="Height" Value="220"/>
+                        <Setter Property="Height" Value="200"/>
                         <Setter Property="CornerRadius" Value="10"/>
                         <Setter Property="Margin" Value="18,0,0,18"/>
                         <Setter Property="Background" Value="White"/>
                         <Setter Property="Cursor" Value="Hand"/>
                     </Style>
                     <Style x:Key="BottomBorderProperties" TargetType="Border">
-                        <Setter Property="Width" Value="160"/>
+                        <Setter Property="Width" Value="158"/>
                         <Setter Property="Height" Value="48"/>
-                        <Setter Property="Margin" Value="0,0,10,0"/>
+                        <Setter Property="Margin" Value="0,0,0,0"/>
+                        <Setter Property="CornerRadius" Value="10"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
                         <Setter Property="VerticalAlignment" Value="Bottom"/>
                         <Setter Property="Background" Value="#6D6F80"/>
                         <Setter Property="Opacity" Value="0.8"/>
                     </Style>
                     <Style x:Key="DocumentTextBlockPropeties" TargetType="TextBlock">
                         <Setter Property="FontFamily" Value="Arial"/>
-                        <Setter Property="Foreground" Value="#FCF3DC"/>
+                        <Setter Property="Foreground" Value="White"/>
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="HorizontalAlignment" Value="Center"/>
                         <Setter Property="VerticalAlignment" Value="Bottom"/>

@@ -72,9 +72,10 @@ namespace Kursovaya_VPKS.Windows
         private void GuestLogInTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             SystemContext.isGuest = "Yes";
-            DocumentViewingWindow documentViewingWindow = new DocumentViewingWindow();
+            /*DocumentViewingWindow documentViewingWindow = new DocumentViewingWindow();
             this.Close();
-            documentViewingWindow.ShowDialog();
+            documentViewingWindow.ShowDialog();*/
+            MessageBox.Show("В разработке");
         }
     }
 }

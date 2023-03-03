@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Kursovaya_VPKS.Classes;
-using Kursovaya_VPKS.Windows;
 
 namespace Kursovaya_VPKS.Windows
 {
@@ -81,7 +80,12 @@ namespace Kursovaya_VPKS.Windows
             bottomDarkeningBorder.VerticalAlignment = VerticalAlignment.Bottom;
             TextBlock itemName = new TextBlock() { Text = item.Title, Style = (Style)DocumentsViewGrid.Resources["DocumentTextBlockPropeties"] };
 
-            borderPanel.
+            borderPanel.Tag = item;
+            bottomDarkeningBorder.Tag = item;
+            itemName.Tag = item;
+
+            borderPanel.MouseLeftButtonUp += ChangeItemButton_Click;
+            bottomDarkeningBorder.MouseLeftButtonUp += ChangeTitleNameButton_Click;
 
             mainGrid.Children.Add(bottomDarkeningBorder);
             mainGrid.Children.Add(itemName);
@@ -89,24 +93,26 @@ namespace Kursovaya_VPKS.Windows
             DocumentsViewGrid.Children.Add(borderPanel);
         }
 
-        private void ChangeItemButton_Click(object sender, RoutedEventArgs e)
+        private void ChangeItemButton_Click(object sender, MouseButtonEventArgs e)
         {
             using (var db = new myDocxAppContext())
             {
+                SystemContext.Item = (sender as Border).Tag as Items;
+                SystemContext.isChange = "Yes";
                 PassportWindow passportWindow = new PassportWindow();
-                SystemContext.Item = ((Items)(sender as Button).Tag);
                 this.Close();
                 passportWindow.ShowDialog();
-            }
+            } 
         }
 
-        private void ChangeTitleNameButton_Click(object sender, RoutedEventArgs e)
+        private void ChangeTitleNameButton_Click(object sender, MouseButtonEventArgs e)
         {
-            
+            SystemContext.Item = (sender as Border).Tag as Items;
         }
 
         private void CreateNewItemButton_Click(object sender, RoutedEventArgs e)
         {
+            SystemContext.isChange = "No";
             PassportWindow passportWindow = new PassportWindow();
             this.Close();
             passportWindow.ShowDialog();
