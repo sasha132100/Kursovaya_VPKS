@@ -55,8 +55,10 @@ namespace Kursovaya_VPKS.Windows
         private Passport CreatingPassportObject()
         {
             using (var db = new myDocxAppContext())
-            {
+            {   
                 Passport passport = new Passport();
+                if (SystemContext.isChange == "No")
+                    passport.Id = SystemContext.NewItem.Id;
                 passport.SeriaNumber = SerialAndNumberTextBlock.Text;
                 passport.DivisionCode = DivisionCodeTextBlock.Text;
                 passport.GiveDate = DateOfIssueTextBlock.Text;
@@ -81,14 +83,12 @@ namespace Kursovaya_VPKS.Windows
             {
                 if (MaleChoiseRadioButton.IsChecked == false && FemaleChoiseRadioButton.IsChecked == false)
                 {
-                    MessageBox.Show("Заполните все поля для добавления!");
                     return "Не заполнены";
                 }
                 return "Заполнены";
             }
             else
             {
-                MessageBox.Show("Заполните все поля для добавления!");
                 return "Не заполнены";
             }
         }
@@ -112,14 +112,37 @@ namespace Kursovaya_VPKS.Windows
                 return "Не изменено";
         }
 
-        private void AddNewPassport()
+        private void AddNewItem()
         {
-            if (CheckingTheFullness() != "Заполнены")
-                return;
+            Items item = new Items();
+            item.Title = "NewTitle";
+            item.Type = "Passport";
+            item.Priority = 0;
+            item.IsHiden = 0;
+            item.IsSelected = 0;
+            item.DateCreation = DateTime.Now.ToString();
+            item.UserId = SystemContext.User.Id;
             using (var db = new myDocxAppContext())
             {
+                db.Items.Add(item);
+                db.SaveChanges();
+                SystemContext.NewItem = (from i in db.Items where i.DateCreation == item.DateCreation select i).FirstOrDefault<Items>();
+            }
+        }
+
+        private string AddNewPassport()
+        {
+            if (CheckingTheFullness() != "Заполнены")
+            {
+                MessageBox.Show("Заполните все поля для добавления!");
+                return "Не заполнены";
+            }
+            using (var db = new myDocxAppContext())
+            {
+                AddNewItem();
                 db.Passport.Add(CreatingPassportObject());
                 db.SaveChanges();
+                return "Добавлен";
             }
         }
 
@@ -138,7 +161,8 @@ namespace Kursovaya_VPKS.Windows
         private void BackWindowButtonImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (SystemContext.isChange == "No")
-                AddNewPassport();
+                if (AddNewPassport() == "Не заполнены")
+                    return;
             else
             {
                 ChangePassport();
