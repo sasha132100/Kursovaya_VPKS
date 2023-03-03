@@ -76,7 +76,7 @@ namespace Kursovaya_VPKS
 
             modelBuilder.Entity<Items>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateCreation).IsRequired();
 
@@ -147,7 +147,7 @@ namespace Kursovaya_VPKS
 
             modelBuilder.Entity<Template>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Date).IsRequired();
 
@@ -162,7 +162,7 @@ namespace Kursovaya_VPKS
 
             modelBuilder.Entity<TemplateDocument>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Template)
                     .WithMany(p => p.TemplateDocument)
@@ -172,7 +172,7 @@ namespace Kursovaya_VPKS
 
             modelBuilder.Entity<TemplateDocumentData>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.TemplateDocument)
                     .WithMany(p => p.TemplateDocumentData)
@@ -187,7 +187,7 @@ namespace Kursovaya_VPKS
 
             modelBuilder.Entity<TemplateObject>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Type).IsRequired();
 
@@ -201,7 +201,7 @@ namespace Kursovaya_VPKS
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Template)
                     .WithMany(p => p.UserTemplate)
@@ -217,7 +217,7 @@ namespace Kursovaya_VPKS
                 entity.HasIndex(e => e.Login)
                     .IsUnique();
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Login).IsRequired();
 
