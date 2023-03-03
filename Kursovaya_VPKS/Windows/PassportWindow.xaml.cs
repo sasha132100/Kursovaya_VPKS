@@ -25,7 +25,8 @@ namespace Kursovaya_VPKS.Windows
         {
             InitializeComponent();
             LoadContent();
-            PassportsOutTextBlock.Text = SystemContext.Item.Title;
+            if (SystemContext.isChange == "Yes")
+                PassportsOutTextBlock.Text = SystemContext.Item.Title;
         }
 
         private void LoadContent()
