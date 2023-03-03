@@ -96,16 +96,16 @@ namespace Kursovaya_VPKS.Windows
             {
                 passport = (from p in db.Passport where p.Id == SystemContext.Item.Id select p).FirstOrDefault<Passport>();
             }
-            if (SerialAndNumberTextBlock.Text == passport.SeriaNumber || DivisionCodeTextBlock.Text == passport.DivisionCode || DateOfIssueTextBlock.Text == passport.GiveDate ||
-                IssuedByWhomTextBlock.Text == passport.ByWhom || FIOTextBlock.Text == passport.Fio || DateOfBirthTextBlock.Text == passport.BirthDate ||
-                PlaceOfBirthTextBlock.Text == passport.BirthPlace || PlaceOfResidenceTextBlock.Text == passport.ResidencePlace)
+            if (SerialAndNumberTextBlock.Text == passport.SeriaNumber && DivisionCodeTextBlock.Text == passport.DivisionCode && DateOfIssueTextBlock.Text == passport.GiveDate &&
+                IssuedByWhomTextBlock.Text == passport.ByWhom && FIOTextBlock.Text == passport.Fio && DateOfBirthTextBlock.Text == passport.BirthDate &&
+                PlaceOfBirthTextBlock.Text == passport.BirthPlace && PlaceOfResidenceTextBlock.Text == passport.ResidencePlace)
             {
                 if ((MaleChoiseRadioButton.IsChecked == true && passport.Gender == "M") || (FemaleChoiseRadioButton.IsChecked == true && passport.Gender == "F"))
                     return "Не изменено";
                 return "Изменено";
             }
             else
-                return "Не изменено";
+                return "Изменено";
         }
 
         private void AddNewItem()
@@ -148,8 +148,22 @@ namespace Kursovaya_VPKS.Windows
             {
                 using (var db = new myDocxAppContext())
                 {
-                    db.Entry(CreatingPassportObject()).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    var passport = (from p in db.Passport where p.Id == SystemContext.Item.Id select p).FirstOrDefault<Passport>();
+                    passport.SeriaNumber = SerialAndNumberTextBlock.Text;
+                    passport.DivisionCode = DivisionCodeTextBlock.Text;
+                    passport.GiveDate = DateOfIssueTextBlock.Text;
+                    passport.ByWhom = IssuedByWhomTextBlock.Text;
+                    passport.Fio = FIOTextBlock.Text;
+                    passport.BirthDate = DateOfBirthTextBlock.Text;
+                    if (MaleChoiseRadioButton.IsChecked == true)
+                        passport.Gender = "M";
+                    else
+                        passport.Gender = "F";
+                    passport.BirthPlace = PlaceOfBirthTextBlock.Text;
+                    passport.ResidencePlace = PlaceOfResidenceTextBlock.Text;
+                    db.Entry(passport).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     db.SaveChanges();
+                    MessageBox.Show("Я изменил");
                 }
             }
         }
