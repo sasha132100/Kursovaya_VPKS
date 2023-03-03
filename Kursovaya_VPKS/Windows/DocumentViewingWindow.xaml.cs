@@ -99,9 +99,16 @@ namespace Kursovaya_VPKS.Windows
             {
                 SystemContext.Item = (sender as Border).Tag as Items;
                 SystemContext.isChange = "Yes";
-                PassportWindow passportWindow = new PassportWindow();
-                this.Close();
-                passportWindow.ShowDialog();
+                if (SystemContext.Item.Type == "Passport")
+                {
+                    PassportWindow passportWindow = new PassportWindow();
+                    this.Close();
+                    passportWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("В данный момент возможно взаимодействовать только с паспортом.");
+                }
             } 
         }
 
@@ -110,7 +117,7 @@ namespace Kursovaya_VPKS.Windows
             SystemContext.Item = (sender as Border).Tag as Items;
         }
 
-        private void CreateNewItemButton_Click(object sender, RoutedEventArgs e)
+        private void CreateNewItemButton_Click(object sender, MouseButtonEventArgs e)
         {
             SystemContext.isChange = "No";
             PassportWindow passportWindow = new PassportWindow();

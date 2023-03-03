@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya_VPKS.Windows"
         ResizeMode="CanMinimize"
-        Title="" Height="850" Width="1100" MinHeight="700" MinWidth="500">
+        Title="" Height="900" Width="1100" MinHeight="700" MinWidth="500">
     <Window.Resources>
         <Style x:Key="TextBlockMainProperties" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial"/>
@@ -14,7 +14,7 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="35,5,0,0"/>
         </Style>
-        <Style x:Key="TextBoxProperties" TargetType="TextBox">
+        <Style x:Key="TextBoxPropertiesType1" TargetType="TextBox">
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="Background" Value="White"/>
@@ -37,16 +37,19 @@
             <Setter Property="Margin" Value="0,0,0,0"/>
         </Style>
         <Style x:Key="RadioButtonProperties" TargetType="RadioButton">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Foreground" Value="#FCF3DC"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
         </Style>
         <Style x:Key="BorderProperties" TargetType="Border">
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Width" Value=""/>
-            <Setter Property="Height" Value=""/>
+            <Setter Property="Width" Value="460"/>
+            <Setter Property="Height" Value="357"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="CornerRadius" Value="10"/>
         </Style>
         <ResourceDictionary x:Key="CornerRadiusSetter">
             <Style TargetType="Border">
@@ -69,14 +72,14 @@
         <Grid DockPanel.Dock="Top">
             <StackPanel Width="550" HorizontalAlignment="Left">
                 <Grid>
-                    <Border Height="220" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" Background="White"/>
+                    <Border x:Name="OwnersPhoto" Height="220" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" Background="White"/>
                     <StackPanel HorizontalAlignment="Right" Width="300" Margin="0,25,0,0">
                         <TextBlock Text="Серия и номер" Style="{StaticResource ResourceKey=TextBlockMainProperties}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:Name="SerialAndNumberTextBlock" Style="{StaticResource ResourceKey=TextBoxProperties}" Resources="{StaticResource CornerRadiusSetter}"/>
+                        <TextBox x:Name="SerialAndNumberTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType1}" Resources="{StaticResource CornerRadiusSetter}"/>
                         <TextBlock Text="Код подразделения" Style="{StaticResource ResourceKey=TextBlockMainProperties}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:Name="DivisionCodeTextBlock" Style="{StaticResource ResourceKey=TextBoxProperties}" Resources="{StaticResource CornerRadiusSetter}"/>
+                        <TextBox x:Name="DivisionCodeTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType1}" Resources="{StaticResource CornerRadiusSetter}"/>
                         <TextBlock Text="Дата выдачи" Style="{StaticResource ResourceKey=TextBlockMainProperties}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:Name="DateOfIssueTextBlock" Style="{StaticResource ResourceKey=TextBoxProperties}" Resources="{StaticResource CornerRadiusSetter}"/>
+                        <TextBox x:Name="DateOfIssueTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType1}" Resources="{StaticResource CornerRadiusSetter}"/>
                     </StackPanel>
                 </Grid>
                 <StackPanel Margin="25,0,0,0">
@@ -86,19 +89,19 @@
                     <TextBox x:Name="FIOTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType2}" Resources="{StaticResource CornerRadiusSetter}"/>
                     <Grid>
                         <TextBlock Text="Дата рождения" Style="{StaticResource ResourceKey=TextBlockMainProperties}"/>
-                        <TextBox x:Name="DateOfBirthTextBlock" Style="{StaticResource ResourceKey=TextBoxProperties}" Resources="{StaticResource CornerRadiusSetter}" Margin="0,30,0,0" Width="250" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Пол" Style="{StaticResource ResourceKey=TextBlockMainProperties}" HorizontalAlignment="Left" Margin="270,35,0,0"/>
-                        <RadioButton/>
-                        <RadioButton/>
+                        <TextBox x:Name="DateOfBirthTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType1}" Resources="{StaticResource CornerRadiusSetter}" Margin="0,30,0,0" Width="250" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Пол" Style="{StaticResource ResourceKey=TextBlockMainProperties}" HorizontalAlignment="Left" Margin="270,38,0,0"/>
+                        <RadioButton x:Name="MaleChoiseRadioButton" Style="{StaticResource ResourceKey=RadioButtonProperties}" Content="М" Margin="0,0,130,5"/>
+                        <RadioButton x:Name="FemaleChoiseRadioButton" Style="{StaticResource ResourceKey=RadioButtonProperties}" Content="Ж" Margin="0,0,70,5"/>
                     </Grid>
                     <TextBlock Text="Место рождения" Style="{StaticResource ResourceKey=TextBlockMainProperties}"/>
-                    <TextBox x:Name="PlaceOfBirthTextBlock" Width = "380" Height = "80" Style="{StaticResource ResourceKey=TextBoxPropertiesType2}" Resources="{StaticResource CornerRadiusSetter}"/>
+                    <TextBox x:Name="PlaceOfBirthTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType2}" Resources="{StaticResource CornerRadiusSetter}"/>
                     <TextBlock Text="Место жительства" Style="{StaticResource ResourceKey=TextBlockMainProperties}"/>
-                    <TextBox x:Name="PlaceOfResidenceTextBlock" Width = "380" Height = "80" Style="{StaticResource ResourceKey=TextBoxPropertiesType2}" Resources="{StaticResource CornerRadiusSetter}"/>
+                    <TextBox x:Name="PlaceOfResidenceTextBlock" Style="{StaticResource ResourceKey=TextBoxPropertiesType2}" Resources="{StaticResource CornerRadiusSetter}"/>
                 </StackPanel>
             </StackPanel>
-            <Border Height="190" Width="160" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,0" Background="Black"/>
-            <Border Height="190" Width="160" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,0" Background="Black"/>
+            <Border x:Name="PassportPhoto1" Style="{StaticResource ResourceKey=BorderProperties}" Margin="0,25,25,0"/>
+            <Border x:Name="PassportPhoto2" Style="{StaticResource ResourceKey=BorderProperties}" Margin="0,400,25,0"/>
         </Grid>
     </DockPanel>
 </Window>
