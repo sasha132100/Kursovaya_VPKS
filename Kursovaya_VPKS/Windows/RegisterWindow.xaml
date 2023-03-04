@@ -52,7 +52,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\sasha\source\repos\Kursovaya_VPKS\Kursovaya_VPKS\Resources\MainWindowBackgroundGradient.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Resources/MainWindowBackgroundGradient.png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition x:Name="LogoRow" Height="4*" />
@@ -62,7 +62,7 @@
             <ColumnDefinition x:Name="LogoColumn"/>
             <ColumnDefinition x:Name="TitleColumn"/>
         </Grid.ColumnDefinitions>
-        <Image Source="C:\Users\sasha\source\repos\Kursovaya_VPKS\Kursovaya_VPKS\Resources\MainWindowLogoImage.png" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto" Height="200" Margin="0,30,40,100"/>
+        <Image Source="pack://application:,,,/Resources/MainWindowLogoImage.png" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto" Height="200" Margin="0,30,40,100"/>
         <TextBlock x:Name="TitleTextBlock" Grid.Row="0" Grid.Column="1" Text="My docs" FontFamily="Roboto" FontSize="40" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-50,30,0,80" FontWeight="Bold">
             <TextBlock.Effect>
                 <DropShadowEffect Opacity="0.6" ShadowDepth="8"/>

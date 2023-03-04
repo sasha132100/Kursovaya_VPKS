@@ -71,7 +71,7 @@ namespace Kursovaya_VPKS.Windows
                 image.Source = new BitmapImage(new Uri("C:\\Users\\sasha\\source\\repos\\Kursovaya_VPKS\\Kursovaya_VPKS\\Resources\\DocumentPlugImage.png"));
             else
                 image.Source = new BitmapImage(new Uri(""));*/
-            image.Source = new BitmapImage(new Uri("C:\\Users\\sasha\\source\\repos\\Kursovaya_VPKS\\Kursovaya_VPKS\\Resources\\DocumentPlugImage.png"));
+            image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/DocumentPlugImage.png"));
             imageBrush.ImageSource = image.Source;
             imageBrush.Stretch = Stretch.UniformToFill;
             mainGrid.Background = imageBrush;
