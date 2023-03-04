@@ -17,6 +17,7 @@ namespace Kursovaya_VPKS
         public myDocxAppContext(DbContextOptions<myDocxAppContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public virtual DbSet<CreditCard> CreditCard { get; set; }
@@ -38,7 +39,7 @@ namespace Kursovaya_VPKS
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlite("Data Source=pack://application:,,,/myDocxApp.db");
+                optionsBuilder.UseSqlite($"Data Source={AppDomain.CurrentDomain.BaseDirectory}\\DataBase\\myDocxApp.db");
             }
         }
 

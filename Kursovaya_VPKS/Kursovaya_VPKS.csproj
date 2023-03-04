@@ -7,6 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DataBase\myDocxApp.db" />
+    <None Remove="Resources\BackArrowButtonImage.png" />
+    <None Remove="Resources\DocumentPlugImage.png" />
+    <None Remove="Resources\MainWindowBackgroundGradient.png" />
+    <None Remove="Resources\MainWindowLogoImage.png" />
+    <None Remove="Resources\OpenSettingsPageButtonImage.png" />
+    <None Remove="Resources\SortButtonImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DataBase\myDocxApp.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.32">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +32,15 @@
 
   <ItemGroup>
     <Folder Include="Pages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\BackArrowButtonImage.png" />
+    <Resource Include="Resources\DocumentPlugImage.png" />
+    <Resource Include="Resources\MainWindowBackgroundGradient.png" />
+    <Resource Include="Resources\MainWindowLogoImage.png" />
+    <Resource Include="Resources\OpenSettingsPageButtonImage.png" />
+    <Resource Include="Resources\SortButtonImage.png" />
   </ItemGroup>
 
 </Project>
