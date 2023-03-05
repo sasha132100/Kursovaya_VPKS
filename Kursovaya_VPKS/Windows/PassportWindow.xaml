@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya_VPKS.Windows"
         ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
         Title="" Height="900" Width="1100" MinHeight="700" MinWidth="500">
     <Window.Resources>
         <Style x:Key="TextBlockMainProperties" TargetType="TextBlock">

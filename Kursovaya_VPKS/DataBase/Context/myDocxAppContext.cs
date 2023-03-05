@@ -17,7 +17,6 @@ namespace Kursovaya_VPKS
         public myDocxAppContext(DbContextOptions<myDocxAppContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
         }
 
         public virtual DbSet<CreditCard> CreditCard { get; set; }

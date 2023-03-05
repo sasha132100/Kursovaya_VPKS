@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya_VPKS.Windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Title="" Height="750" Width="1100" MinHeight="700" MinWidth="500">
     <Window.Resources>
